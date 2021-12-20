@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="cancul.css" rel="stylesheet" />
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+
+<h1>Hello To My Calculator</h1>
+
+<p id="feedback"></p>
+
+<p id="correct"></p>
+
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('1')"> 1 </button>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('2')"> 2 </button>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('3')"> 3 </button>
+
+
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="action('-')"> - </button>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="Clear('C')"> C </button>
+
+<br>
+
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('4')"> 4 </button>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('5')"> 5 </button>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('6')"> 6 </button>
+
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" inclick="action('+')"> + </button>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="action('%')"> % </button>
+
+<br>
+
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('7')"> 7 </button>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('8')"> 8 </button>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('9')"> 9 </button>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="number('0')"> 0 </button>
+
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="action('*')"> * </button>
+<br>
+<button onmouseover="lechitsa(this)" onmouseout="azavta(this)" onclick="Equal('=')"> = </button>
+
+
+
+<br>
+
+<script>
+
+         var num1=" ";
+         var num2=" ";
+         var sign=" ";
+         var outCome=0;
+
+
+
+
+        function number(num){
+
+            if(sign ===" "){
+                num1+= parseInt(num);
+            }
+            else{
+                num2+=parseInt(num);
+            }
+            document.getElementById("feedback").innerHTML = num1 + " " + sign + " " + num2 ;
+            }
+
+
+        function action(pms) {
+            if (pms === "+")
+                sign = "+";
+            else if (pms === "-")
+                sign = "-";
+            else if (pms === "*")
+                sign = "*";
+            else if (pms === "%")
+                sign = "%";
+            else if (pms === "C")
+                sign="C";
+
+        }
+        function Equal() {
+
+            if (sign === "+") outCome = parseInt(num1) + parseInt(num2);
+            else if (sign === "*") outCome = parseInt(num1) * parseInt(num2);
+            else if (sign === "%") outCome = parseInt(num1) / parseInt(num2);
+            else if (sign === "-") outCome = parseInt(num1) - parseInt(num2);
+
+
+                document.getElementById("correct").innerHTML =  "The answer is : " + outCome;
+            }
+
+
+        function Clear(C){
+            if(C == "C") {
+                (document.getElementById("correct").innerHTML = " ") && (sign = " ") && (num2 = " ") && (num1 = " ");
+                (document.getElementById("feedback").innerHTML = " ");
+            }
+
+
+
+            }
+
+
+
+
+</script>
+<script>
+
+
+         function lechitsa(button){
+               button.style.backgroundColor="purple";
+            }
+
+         function azavta(button){
+                button.style.backgroundColor="blue";
+            }
+</script>
+
+</body>
+</html>
